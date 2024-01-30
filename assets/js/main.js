@@ -4,6 +4,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            activechat: 0,
             contacts: [
                 {
                 name: 'Michele',
@@ -145,7 +146,7 @@ createApp({
                 ],
                 },
                 {
-                name: 'Davide',
+                name: 'Daniela',
                 avatar: './assets/img/avatar_io.jpg',
                 visible: true,
                 messages: [
@@ -166,10 +167,11 @@ createApp({
                 }
                 ],
                 }
-                ],
+            ],
             newMessage: {
-                text: "",
-                done: false
+                date: '',
+                message: '',
+                status: 'sent'
             }
         }
     },
@@ -178,17 +180,24 @@ createApp({
     },
     methods: {
         deleteMsg(index) {
-            this.tasks.splice(index, 1)
+            this.contacts.splice(index, 1)
         },
         addMsg() {
-            if (this.newMessage.text == ""){
+            if (this.newMessage.message == ""){
                 alert("Non hai inserito Task")
             } else {
                 let addnewMessage = Object.assign({}, this.newMessage);
-                this.tasks.push(addnewMessage)
-                this.newMessage.text = ""
+                this.contacts.push(addnewMessage)
+                this.newMessage.message = ""
             }
         },
+        getHour(date){
+            let output = ""
+            for (let i=11; i<16; i++){
+                output += date[i]
+            }
+            return output
+        }
         
     }
 
