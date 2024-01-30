@@ -3,3 +3,68 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+
+img{
+    height: 100%;
+    border-radius: 50%;
+}
+
+figure{
+    margin: 0;
+}
+
+#web-app{
+    background: rgb(0,150,135);
+    background: linear-gradient(180deg, rgba(0,150,135,1) 10%, rgba(0,150,135,1) 10%, rgba(0,212,255,1) 10%, rgba(215,215,210,1) 10%, rgba(182,182,180,1) 100%);
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#window{
+    background: #e6e6e6;
+    width: 80%;
+    height: 95%;
+}
+
+.left-column{
+    height: 100%;
+}
+
+.right-column{
+    height: 100%;
+}
+
+#myProfile{
+    display: flex;
+    align-items: center;
+}
+
+.header{
+    border: 2px solid #ffeeee;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header>div{
+    height: 75px;
+    padding: 15px;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.fa-solid{
+    color: #afafaf;
+    font-size: 20px;
+}
+
+.profilePic{
+    border-radius: 50%;
+    height: 60px;
+}
