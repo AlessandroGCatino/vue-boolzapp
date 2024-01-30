@@ -167,7 +167,7 @@ createApp({
                 ],
                 }
                 ],
-            newTask: {
+            newMessage: {
                 text: "",
                 done: false
             }
@@ -181,14 +181,12 @@ createApp({
             this.tasks.splice(index, 1)
         },
         addMsg() {
-            if (this.tasks.filter(e => e.text === this.newTask.text).length > 0) {
-                alert("Task già inserita")
-            } else if (this.newTask.text == ""){
+            if (this.newMessage.text == ""){
                 alert("Non hai inserito Task")
             } else {
-                let addNewTask = Object.assign({}, this.newTask);
-                this.tasks.push(addNewTask)
-                this.newTask.text = ""
+                let addnewMessage = Object.assign({}, this.newMessage);
+                this.tasks.push(addnewMessage)
+                this.newMessage.text = ""
             }
         },
         
