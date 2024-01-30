@@ -13,6 +13,10 @@ figure{
     overflow: hidden;
 }
 
+p{
+    margin-bottom: 0;
+}
+
 #web-app{
     background: rgb(0,150,135);
     background: linear-gradient(180deg, rgba(0,150,135,1) 10%, rgba(0,150,135,1) 10%, rgba(0,212,255,1) 10%, rgba(215,215,210,1) 10%, rgba(182,182,180,1) 100%);
@@ -128,7 +132,7 @@ figure{
     color: grey;
 }
 
-.hour{
+.chat .hour{
     position: absolute;
     top: 15px;
     right: 20px;
@@ -145,5 +149,35 @@ figure{
 
 #extendedChat{
     background-image: url("../img/mine.jpg");
-    height: calc(100% - 75px);
+    height: calc(100% - 150px);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    gap: 10px;
+    padding: 15px;
+}
+
+#extendedChat>.message{
+    padding: 15px 25px 15px 20px;
+    max-width: 40%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.received{
+    background-color: white;
+    align-self: flex-start;
+}
+
+.sent{
+    background-color: #d2f5b9;
+    align-self: flex-end;
+}
+
+.message .hour{
+    position: absolute;
+    font-size: 10px;
+    bottom: 3px;
+    right: 5px;
+    color: gray;
 }

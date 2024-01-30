@@ -176,7 +176,7 @@ createApp({
         }
     },
     created() {
-
+        
     },
     methods: {
         deleteMsg(index) {
@@ -197,7 +197,10 @@ createApp({
                 output += date[i]
             }
             return output
-        }
+        },
+        setChat(index){
+            this.activechat = index
+          }
         
     }
 

@@ -53,7 +53,7 @@
                           </div>
                     </div>
                     <div id="chats">
-                        <div class="d-flex chat" v-for="(chat, index) in contacts" :class="index == 0? 'active':'' ">
+                        <div class="d-flex chat" v-for="(chat, index) in contacts" :class="activechat == index ? 'active' : '' " @click="setChat(index)">
                             <figure class="profilePic me-3">
                                 <img :src="chat.avatar" :alt="chat.name">
                             </figure>
@@ -86,7 +86,10 @@
 
                     </div>
                     <div id="extendedChat">
-
+                        <div v-for="(message,index) in contacts[activechat].messages" :class="message.status" class="message">
+                            <p> {{message.message}} </p>
+                            <span class="hour">{{getHour(message.date)}}</span>
+                        </div>
 
                     </div>
                 </div>
