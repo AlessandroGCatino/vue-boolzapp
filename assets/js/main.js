@@ -183,12 +183,16 @@ createApp({
     /* MILESTONE 4*/
     computed: {
         filteredContacts(){
-            return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.filter.toLowerCase()))
-        },
+            let test = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.filter.toLowerCase()))
+            if (test.length > 0 ){
+                return test
+            }
+        }
     },
     methods: {
+        /*MILESTONE 5*/
         deleteMsg(index) {
-            this.contacts.splice(index, 1)
+            this.contacts[this.activechat].messages.splice(index, 1)
         },
         addMsg(index) {
             if (this.newMessage.message != ""){

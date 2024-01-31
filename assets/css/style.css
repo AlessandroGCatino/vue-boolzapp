@@ -182,6 +182,21 @@ p{
     color: gray;
 }
 
+.message .options{
+    position: absolute;
+    font-size: 14px;
+    top: 5px;
+    right: 7px;
+    opacity: 0;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.message:hover .options{
+    opacity: 1;
+    transition: 0.3s;
+}
+
 #new-message{
     height: 75px;
 }
