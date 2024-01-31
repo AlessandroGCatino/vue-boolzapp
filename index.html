@@ -49,11 +49,11 @@
                             <span class="input-group-text">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
-                            <input type="text" id="searchBar" class="form-control" placeholder="Cerca una conversazione...">
+                            <input type="text" v-model="filter" class="form-control" placeholder="Cerca una conversazione...">
                           </div>
                     </div>
                     <div id="chats">
-                        <div class="d-flex chat" v-for="(chat, index) in contacts" :class="activechat == index ? 'active' : '' " @click="setChat(index)">
+                        <div class="d-flex chat" v-for="(chat, index) in filteredContacts" :class="activechat == index ? 'active' : '' " @click="setChat(index)">
                             <figure class="profilePic me-3">
                                 <img :src="chat.avatar" :alt="chat.name">
                             </figure>
@@ -75,7 +75,7 @@
                             <div>
                                 <span> {{contacts[activechat].name}} </span>
                                 <br>
-                                <span id="last-login"> Ultimo accesso {{contacts[activechat].messages[(contacts[activechat].messages.length)-1].date}}</span>
+                                <span id="last-login"> Ultimo accesso fatto alle  {{getHour(contacts[activechat].messages[(contacts[activechat].messages.length)-1].date)}}</span>
                             </div>
                         </div>
                         <div class="funcions">
@@ -91,6 +91,13 @@
                             <span class="hour">{{getHour(message.date)}}</span>
                         </div>
 
+                    </div>
+                    <div id="new-message" class="d-flex align-items-center p-2 gap-3">
+                        <i class="fa-regular fa-smile px-3"></i>
+                        <div class="w-100">
+                            <input type="text" class="form-control" name="newMessage" placeholder="Nuovo messaggio.." v-model="this.newMessage.message" @keyup.enter="addMsg(activechat)"/>
+                        </div>
+                        <i class="fa-solid fa-microphone px-3" aria-hidden="true"></i>
                     </div>
                 </div>
 

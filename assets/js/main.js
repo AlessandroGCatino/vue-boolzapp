@@ -4,6 +4,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            response : null,
+            filter: "",
             activechat: 0,
             contacts: [
                 {
@@ -178,24 +180,51 @@ createApp({
     created() {
         
     },
+    /* MILESTONE 4*/
+    computed: {
+        filteredContacts(){
+            return this.contacts.filter(contact => contact.name.toLowerCase().includes(this.filter.toLowerCase()))
+        },
+    },
     methods: {
         deleteMsg(index) {
             this.contacts.splice(index, 1)
         },
-        addMsg() {
-            if (this.newMessage.message == ""){
-                alert("Non hai inserito Task")
-            } else {
+        addMsg(index) {
+            if (this.newMessage.message != ""){
+                const d = new Date()
+                this.newMessage.date = this.getFormattedDate(d);
                 let addnewMessage = Object.assign({}, this.newMessage);
-                this.contacts.push(addnewMessage)
-                this.newMessage.message = ""
+                this.contacts[index].messages.push(addnewMessage);
+                this.newMessage.message = "";
+                setTimeout(() => this.responseMsg(index), 2000)
             }
+        },
+        responseMsg(index){
+            const d = new Date()
+            this.newMessage.date = this.getFormattedDate(d);
+            this.newMessage.message = "ok"
+            this.newMessage.status = "received"
+            let addnewMessage = Object.assign({}, this.newMessage);
+            this.contacts[index].messages.push(addnewMessage);
+            this.newMessage.message = "";
+            this.newMessage.status = "sent"
         },
         getHour(date){
             let output = ""
             for (let i=11; i<16; i++){
                 output += date[i]
             }
+            return output
+        },
+        getFormattedDate(date){
+            let day = date.getDate().toString().padStart(2,"0")
+            let month = ((date.getMonth())+1).toString().padStart(2,"0")
+            let year = date.getFullYear()
+            let hour = date.getHours().toString().padStart(2,"0")
+            let minutes = date.getMinutes().toString().padStart(2,"0")
+            let seconds = date.getSeconds().toString().padStart(2,"0")
+            let output = (`${day}/${month}/${year} ${hour}:${minutes}:${seconds}`)
             return output
         },
         setChat(index){

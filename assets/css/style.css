@@ -181,3 +181,12 @@ p{
     right: 5px;
     color: gray;
 }
+
+#new-message{
+    height: 75px;
+}
+
+#new-message .fa-solid,
+#new-message .fa-regular{
+    font-size: 22px;
+}
