@@ -181,14 +181,14 @@ createApp({
         
     },
     /* MILESTONE 4*/
-    computed: {
-        filteredContacts(){
-            let test = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.filter.toLowerCase()))
-            if (test.length > 0 ){
-                return test
-            }
-        }
-    },
+    // computed: {
+    //     filteredContacts(){
+    //         let test = this.contacts.filter(contact => contact.name.toLowerCase().includes(this.filter.toLowerCase()))
+    //         if (test.length > 0 ){
+    //             return test
+    //         }
+    //     }
+    // },
     methods: {
         /*MILESTONE 5*/
         deleteMsg(index) {
@@ -233,8 +233,17 @@ createApp({
         },
         setChat(index){
             this.activechat = index
-          }
-        
+        },
+        filterList(){
+            this.contacts.forEach( element => {
+                if(element.name.toLowerCase().includes(this.filter.toLowerCase())){
+                    element.visible = true
+                } else {
+                    element.visible = false
+                }
+            }
+            )
+        }
     }
 
 }).mount('#app')
